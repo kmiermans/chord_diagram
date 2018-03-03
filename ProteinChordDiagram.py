@@ -10,7 +10,6 @@ class ProteinChordDiagram:
     """
     def __init__(self, sites, polymer_length, radius = 1, max_radius=0.9, color_scheme='dark', size=600):
         self.color_scheme = color_scheme
-        self.attrs = group.attrs
         self.L = polymer_length
         self.radius = radius
         self.max_radius = max_radius
@@ -176,7 +175,7 @@ class ProteinChordDiagram:
         thermal_variance = ter_size
         if thermal_variance < (self.L / 2) ** 2:  # if this condition does not hold, there's aspecific binding, and it would be senseless to draw an origin
             delta = int(np.sqrt(thermal_variance))
-            begin, end = int(self.L/2-delta), int(self.L/2+delta+1)
+            begin, end = int(self.L/2-delta), int(self.L/2+delta)
             angles = np.linspace(begin, end, num=interpolation_ratio*(end-begin))
             plt.plot(self.compute_angles(angles), len(angles)*[radius], c=self.color_ter, alpha=alpha, lw=3, zorder=100)
 
@@ -240,13 +239,10 @@ class ProteinChordDiagram:
             plt.savefig(output_file, edgecolor='none', dpi=self.dpi, transparent=True)
 
 if __name__ == '__main__':
-    import h5py
     file_name = '/Users/C.Miermans/projects/chromosome/python_packages/chromosome_visualization/test_data/raw_data.h5'
-    File = h5py.File(file_name, mode='r')
-    group = File[list(File)[0]]
-    sites = np.array(group[f'{list(group)[-1]}/proteins'])[:, :2]
+    sites = np.array([[1,5], [4, 10]])
 
-    X = ProteinChordDiagram(sites, group.attrs['n_monomers'][0], color_scheme='light')
+    X = ProteinChordDiagram(sites, 12, color_scheme='light')
     # X.draw_vertices(list(group)[0])
     X.draw_all(add_text=True, alpha=0.5)
 

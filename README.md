@@ -7,7 +7,7 @@ Makes a circos-like diagram to visualize 'chords' that connect points on the cir
 This packages leverages matplotlib to draw a circle with chords that connect points on that circle. I designed this module to represent a circular polymer with bivalent proteins, connecting to monomers on that polymer to each other. Hence, the length of the circle (*kwarg*: polymer_length) represents the length of the polymer, and the input array (*kwarg*: sites) is an Nx2 array representing all the different connections between those points on the circle.
 
 ## Terms of use
-You're free to use this script, but please cite it for use in published works as *C.A.Miermans, mayavi_tubeplot, (2018), GitHub repository, https://github.com/kmiermans/mayavi_tubeplot*.
+You're free to use this script, but please cite it for use in published works as *C.A.Miermans, chord_diagram, (2018), GitHub repository, https://github.com/kmiermans/chord_diagram*.
 
 
 ## Usage

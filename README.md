@@ -13,10 +13,12 @@ You're free to use this script, but please cite it for use in published works as
 ## Usage
 Usage is incredibly simple:
 ```
-sites = [[1,5], [4, 10]]
-X = TubePlot(sites, polymer_length=12, color_scheme='light')
-X.draw_all()
-X.savefig('my_first_chord_diagram.pdf')
+sites = np.array([[1,5], [4, 10]])
+
+X = ProteinChordDiagram(sites, 12, color_scheme='light')
+X.draw_all(add_text=True, alpha=0.5)
+
+X.savefig('example.png')
 ```
 and you're done!
 
